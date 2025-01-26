@@ -19,6 +19,18 @@ class StrollColors {
   /// Color: #232A2E
   static const Color darkGrey = Color(0xFF232A2E);
 
+  /// Color: #0F1115
+  static const Color gradient0 = Color(0xFF0F1115);
+
+  /// Color: #0D0E12
+  static const Color gradient28 = Color(0xFF0D0E12);
+
+  /// Color: #0B0C0F
+  static const Color gradient64 = Color(0xFF0B0C0F);
+
+  /// Color: #090B0D
+  static const Color gradient80 = Color(0xFF090B0D);
+
   /// Color: #CCCBFF
   static const Color largeTitleWhite = Color(0xFFCCCBFF);
 
