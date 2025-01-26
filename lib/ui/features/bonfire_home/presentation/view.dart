@@ -92,7 +92,7 @@ class BonfireHomeView extends StatelessWidget {
             StrollColors.gradient64.withOpacity(0.85),
             StrollColors.black,
           ],
-          stops: const [0.45, 0.53, 1.0], // Adjust the fade transition
+          stops: const [0.5, 0.55, 1.0], // Adjust the fade transition
         ),
       ),
       child: Column(
@@ -104,7 +104,7 @@ class BonfireHomeView extends StatelessWidget {
             children: [
               Positioned(
                 left: 55.dm,
-                top: 30.h,
+                top: 15.h,
                 child: Container(
                   height: 20.h,
                   width: 100.w,
@@ -128,25 +128,63 @@ class BonfireHomeView extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                height: 115.h,
-                padding: EdgeInsets.symmetric(horizontal: 14.w),
-                child: Row(
+              SizedBox(
+                height: 105.h,
+                child: Column(
                   children: [
-                    Container(
-                      height: 60.dm,
-                      width: 60.dm,
-                      decoration: const BoxDecoration(
-                        color: StrollColors.darkGrey,
-                        shape: BoxShape.circle,
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 20.w, right: 14.w),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 60.dm,
+                              width: 60.dm,
+                              decoration: const BoxDecoration(
+                                color: StrollColors.darkGrey,
+                                shape: BoxShape.circle,
+                              ),
+                              padding: EdgeInsets.all(5.dm),
+                              child: CircleAvatar(
+                                backgroundImage:
+                                    StrollAssets.images.png.avatar.provider(),
+                                backgroundColor: StrollColors.gradient80,
+                              ),
+                            ),
+                            6.verticalGap,
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: 10.w, top: 40.h, right: 24.w),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      'What is you favourite time of the day?',
+                                      style: TextStyle(
+                                        color: StrollColors.smallTitleWhite,
+                                        fontSize: 20.sp,
+                                        height: 20.4.toLineHeight(20),
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                      padding: EdgeInsets.all(5.dm),
-                      child: CircleAvatar(
-                        backgroundImage:
-                            StrollAssets.images.png.avatar.provider(),
-                        backgroundColor: StrollColors.gradient80,
-                      ),
-                    )
+                    ),
+                    10.verticalGap,
+                    Text(
+                      '“Mine is definitely the peace in the morning.”',
+                      style: TextStyle(
+                          color: StrollColors.smallTitleWhite,
+                          fontSize: 12.sp,
+                          height: 14.4.toLineHeight(12),
+                          fontWeight: FontWeight.w400,
+                          fontStyle: FontStyle.italic),
+                    ),
                   ],
                 ),
               ),

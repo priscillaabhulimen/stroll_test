@@ -1,4 +1,4 @@
-name: Blue personal jobs
+name: Basic jobs
 on:
   push:
     branches:
