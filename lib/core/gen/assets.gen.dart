@@ -45,11 +45,17 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/chat.svg
   SvgGenImage get chat => const SvgGenImage('assets/images/svg/chat.svg');
 
+  /// File path: assets/images/svg/person.svg
+  SvgGenImage get person => const SvgGenImage('assets/images/svg/person.svg');
+
+  /// File path: assets/images/svg/time.svg
+  SvgGenImage get time => const SvgGenImage('assets/images/svg/time.svg');
+
   /// File path: assets/images/svg/user.svg
   SvgGenImage get user => const SvgGenImage('assets/images/svg/user.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [bonfire, card, chat, user];
+  List<SvgGenImage> get values => [bonfire, card, chat, person, time, user];
 }
 
 class StrollAssets {
