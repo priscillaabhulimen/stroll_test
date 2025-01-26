@@ -129,7 +129,7 @@ class BonfireHomeView extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 105.h,
+                height: 117.h,
                 child: Column(
                   children: [
                     Expanded(
@@ -151,7 +151,7 @@ class BonfireHomeView extends StatelessWidget {
                                 backgroundColor: StrollColors.gradient80,
                               ),
                             ),
-                            6.verticalGap,
+                            4.verticalGap,
                             Expanded(
                               child: Padding(
                                 padding: EdgeInsets.only(
@@ -159,10 +159,10 @@ class BonfireHomeView extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     Text(
-                                      'What is you favourite time of the day?',
+                                      'What is your favourite time of the day?',
                                       style: TextStyle(
                                         color: StrollColors.smallTitleWhite,
-                                        fontSize: 20.sp,
+                                        fontSize: 19.sp,
                                         height: 20.4.toLineHeight(20),
                                         fontWeight: FontWeight.w700,
                                       ),
@@ -224,7 +224,7 @@ class BonfireHomeView extends StatelessWidget {
   Container optionTile(bool isSelected, OptionObject item) {
     return Container(
       height: 57.h,
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 12.h),
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
       decoration: BoxDecoration(
         color: StrollColors.darkGrey,
         borderRadius: BorderRadius.circular(12.r),
@@ -263,7 +263,7 @@ class BonfireHomeView extends StatelessWidget {
             child: Text(
               item.title,
               style: TextStyle(
-                fontSize: 14.sp,
+                fontSize: 12.5.sp,
                 height: 14.7.toLineHeight(14),
                 fontWeight: FontWeight.w400,
                 color: StrollColors.subtitleWhite,
