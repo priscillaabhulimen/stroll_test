@@ -5,6 +5,7 @@ import 'package:stroll_test/core/config/module/base_screen.dart';
 import 'package:stroll_test/core/gen/assets.gen.dart';
 import 'package:stroll_test/core/gen/colors.gen.dart';
 import 'package:stroll_test/core/gen/fonts.gen.dart';
+import 'package:stroll_test/core/models/option.dart';
 import 'package:stroll_test/core/utils/extensions.dart';
 
 import 'view_model.dart';
@@ -29,7 +30,7 @@ class BonfireHomeView extends StatelessWidget {
                 radialFade(),
                 SafeArea(
                   bottom: false,
-                  child: body(context),
+                  child: body(context, model),
                 )
               ],
             ),
@@ -78,69 +79,159 @@ class BonfireHomeView extends StatelessWidget {
     );
   }
 
-  Container body(BuildContext context) => Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Colors.transparent,
-              StrollColors.gradient64.withOpacity(0.7),
-              StrollColors.black,
-            ],
-            stops: const [0.4, 0.5, 1.0], // Adjust the fade transition
-          ),
-        ),
-        child: Column(
-          children: [
-            strollBonfireText(),
-            countdownText(),
-            const Spacer(),
-            Padding(
-              padding: EdgeInsets.only(bottom: 12.h, left: 14.w, right: 14.w),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: pickColumn(),
-                  ),
-                  8.horizontalGap,
-                  Container(
-                    height: 48.dm,
-                    width: 48.dm,
-                    decoration: BoxDecoration(
-                      border:
-                          Border.all(color: StrollColors.primary, width: 3.5.w),
-                      shape: BoxShape.circle,
-                    ),
-                    alignment: Alignment.center,
-                    child: Icon(
-                      CupertinoIcons.mic_fill,
-                      size: 30.sp,
-                      color: StrollColors.primary,
-                    ),
-                  ),
-                  4.horizontalGap,
-                  Container(
-                    height: 48.dm,
-                    width: 48.dm,
-                    decoration: const BoxDecoration(
-                      color: StrollColors.primary,
-                      shape: BoxShape.circle,
-                    ),
-                    alignment: Alignment.center,
-                    child: Icon(
-                      Icons.arrow_forward_rounded,
-                      size: 30.sp,
-                    ),
-                  )
-                ],
-              ),
-            )
+  Container body(BuildContext context, BonfireHomeViewModel model) {
+    return Container(
+      height: double.infinity,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.transparent,
+            StrollColors.gradient64.withOpacity(0.7),
+            StrollColors.black,
           ],
+          stops: const [0.4, 0.5, 1.0], // Adjust the fade transition
         ),
-      );
+      ),
+      child: Column(
+        children: [
+          strollBonfireText(),
+          countdownText(),
+          const Spacer(),
+          SizedBox(
+            height: 115.h,
+            child: Row(
+              children: [],
+            ),
+          ),
+          12.verticalGap,
+          optionsSection(model),
+          12.verticalGap,
+          lastRow()
+        ],
+      ),
+    );
+  }
+
+  Container optionsSection(BonfireHomeViewModel model) {
+    return Container(
+      height: 125.h,
+      padding: EdgeInsets.symmetric(horizontal: 14.w),
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 12,
+          mainAxisExtent: 57.h,
+        ),
+        itemCount: model.options.length,
+        itemBuilder: (context, i) {
+          bool isSelected = i == model.optionIndex;
+          return optionTile(isSelected, model.options[i]).onTap(() {
+            model.optionIndex = i;
+          });
+        },
+      ),
+    );
+  }
+
+  Container optionTile(bool isSelected, OptionObject item) {
+    return Container(
+      height: 57.h,
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 12.h),
+      decoration: BoxDecoration(
+        color: StrollColors.darkGrey,
+        borderRadius: BorderRadius.circular(12.r),
+        border: Border.all(
+          color: isSelected ? StrollColors.primary : StrollColors.darkGrey,
+          width: 3.w,
+        ),
+      ),
+      child: Row(
+        children: [
+          Container(
+            height: 20.dm,
+            width: 20.dm,
+            decoration: BoxDecoration(
+              color: isSelected ? StrollColors.primary : Colors.transparent,
+              border: Border.all(
+                color: isSelected
+                    ? StrollColors.primary
+                    : StrollColors.subtitleWhite,
+              ),
+              shape: BoxShape.circle,
+            ),
+            alignment: Alignment.center,
+            child: Text(
+              item.id,
+              style: TextStyle(
+                fontSize: 12.sp,
+                height: 14.62.toLineHeight(14),
+                fontWeight: FontWeight.w400,
+                color: StrollColors.subtitleWhite,
+              ),
+            ),
+          ),
+          6.horizontalGap,
+          Expanded(
+            child: Text(
+              item.title,
+              style: TextStyle(
+                fontSize: 14.sp,
+                height: 14.7.toLineHeight(14),
+                fontWeight: FontWeight.w400,
+                color: StrollColors.subtitleWhite,
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget lastRow() {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 12.h, left: 14.w, right: 14.w),
+      child: Row(
+        children: [
+          Expanded(
+            child: pickColumn(),
+          ),
+          8.horizontalGap,
+          Container(
+            height: 48.dm,
+            width: 48.dm,
+            decoration: BoxDecoration(
+              border: Border.all(color: StrollColors.primary, width: 3.5.w),
+              shape: BoxShape.circle,
+            ),
+            alignment: Alignment.center,
+            child: Icon(
+              CupertinoIcons.mic_fill,
+              size: 30.sp,
+              color: StrollColors.primary,
+            ),
+          ),
+          4.horizontalGap,
+          Container(
+            height: 48.dm,
+            width: 48.dm,
+            decoration: const BoxDecoration(
+              color: StrollColors.primary,
+              shape: BoxShape.circle,
+            ),
+            alignment: Alignment.center,
+            child: Icon(
+              Icons.arrow_forward_rounded,
+              size: 30.sp,
+            ),
+          )
+        ],
+      ),
+    );
+  }
 
   Column pickColumn() {
     return Column(
