@@ -89,10 +89,10 @@ class BonfireHomeView extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [
             Colors.transparent,
-            StrollColors.gradient64.withOpacity(0.7),
+            StrollColors.gradient64.withOpacity(0.85),
             StrollColors.black,
           ],
-          stops: const [0.4, 0.5, 1.0], // Adjust the fade transition
+          stops: const [0.45, 0.53, 1.0], // Adjust the fade transition
         ),
       ),
       child: Column(
@@ -100,11 +100,57 @@ class BonfireHomeView extends StatelessWidget {
           strollBonfireText(),
           countdownText(),
           const Spacer(),
-          SizedBox(
-            height: 115.h,
-            child: Row(
-              children: [],
-            ),
+          Stack(
+            children: [
+              Positioned(
+                left: 55.dm,
+                top: 30.h,
+                child: Container(
+                  height: 20.h,
+                  width: 100.w,
+                  padding: EdgeInsets.only(right: 12.w),
+                  decoration: BoxDecoration(
+                    color: StrollColors.darkGrey,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(10.r),
+                      bottomRight: Radius.circular(10.r),
+                    ),
+                  ),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    'Angeline, 28',
+                    style: TextStyle(
+                      color: StrollColors.smallTitleWhite,
+                      fontSize: 11.sp,
+                      height: 13.4.toLineHeight(11),
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 115.h,
+                padding: EdgeInsets.symmetric(horizontal: 14.w),
+                child: Row(
+                  children: [
+                    Container(
+                      height: 60.dm,
+                      width: 60.dm,
+                      decoration: const BoxDecoration(
+                        color: StrollColors.darkGrey,
+                        shape: BoxShape.circle,
+                      ),
+                      padding: EdgeInsets.all(5.dm),
+                      child: CircleAvatar(
+                        backgroundImage:
+                            StrollAssets.images.png.avatar.provider(),
+                        backgroundColor: StrollColors.gradient80,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
           12.verticalGap,
           optionsSection(model),

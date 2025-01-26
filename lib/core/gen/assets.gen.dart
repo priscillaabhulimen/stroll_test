@@ -25,12 +25,16 @@ class $AssetsImagesGen {
 class $AssetsImagesPngGen {
   const $AssetsImagesPngGen();
 
+  /// File path: assets/images/png/avatar.jpeg
+  AssetGenImage get avatar =>
+      const AssetGenImage('assets/images/png/avatar.jpeg');
+
   /// File path: assets/images/png/sunset.png
   AssetGenImage get sunset =>
       const AssetGenImage('assets/images/png/sunset.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [sunset];
+  List<AssetGenImage> get values => [avatar, sunset];
 }
 
 class $AssetsImagesSvgGen {
