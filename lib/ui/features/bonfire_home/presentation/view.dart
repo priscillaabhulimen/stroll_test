@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stroll_test/core/config/module/base_screen.dart';
@@ -93,16 +94,88 @@ class BonfireHomeView extends StatelessWidget {
           ),
         ),
         child: Column(
-          children: [strollBonfireText(), countdownText()],
+          children: [
+            strollBonfireText(),
+            countdownText(),
+            const Spacer(),
+            Padding(
+              padding: EdgeInsets.only(bottom: 12.h, left: 14.w, right: 14.w),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: pickColumn(),
+                  ),
+                  8.horizontalGap,
+                  Container(
+                    height: 48.dm,
+                    width: 48.dm,
+                    decoration: BoxDecoration(
+                      border:
+                          Border.all(color: StrollColors.primary, width: 3.5.w),
+                      shape: BoxShape.circle,
+                    ),
+                    alignment: Alignment.center,
+                    child: Icon(
+                      CupertinoIcons.mic_fill,
+                      size: 30.sp,
+                      color: StrollColors.primary,
+                    ),
+                  ),
+                  4.horizontalGap,
+                  Container(
+                    height: 48.dm,
+                    width: 48.dm,
+                    decoration: const BoxDecoration(
+                      color: StrollColors.primary,
+                      shape: BoxShape.circle,
+                    ),
+                    alignment: Alignment.center,
+                    child: Icon(
+                      Icons.arrow_forward_rounded,
+                      size: 30.sp,
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
         ),
       );
+
+  Column pickColumn() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Pick your option.',
+          style: TextStyle(
+            fontFamily: StrollFonts.proximaNova,
+            color: StrollColors.lightGrey,
+            fontWeight: FontWeight.w400,
+            fontSize: 12.sp,
+            height: 14.4.toLineHeight(12),
+          ),
+        ),
+        Text(
+          'See who has a similar mind.',
+          style: TextStyle(
+            fontFamily: StrollFonts.proximaNova,
+            color: StrollColors.lightGrey,
+            fontWeight: FontWeight.w400,
+            fontSize: 12.sp,
+            height: 14.4.toLineHeight(12),
+          ),
+        ),
+      ],
+    );
+  }
 
   Row countdownText() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         StrollAssets.images.svg.time.svg(),
-        2.horizontalGap,
+        4.horizontalGap,
         Text(
           '22h 00m',
           style: TextStyle(
@@ -116,7 +189,7 @@ class BonfireHomeView extends StatelessWidget {
         ),
         8.horizontalGap,
         StrollAssets.images.svg.person.svg(),
-        2.horizontalGap,
+        4.horizontalGap,
         Text(
           '103',
           style: TextStyle(
