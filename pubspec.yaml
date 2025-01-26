@@ -55,11 +55,11 @@ flutter_gen:
     outputs:
       class_name: StrollFonts
       package_parameter_enabled: false
-  # colors:
-  #   outputs:
-  #     class_name: StrollColors
-  #   inputs:
-  #     - assets/color/colors.xml
+  colors:
+    outputs:
+      class_name: StrollColors
+    inputs:
+      - assets/colors/colors.xml
   integrations:
     flutter_svg: true
 
